@@ -1,67 +1,106 @@
-# malaria-parasite-detection
-Source code, datasets documentation, experiments and development artefacts for an ensemble deep learning model for malaria parasite detection from microscopic blood smear images.
+# Ensemble Deep Learning for Malaria Parasite Detection
 
-Ensemble Deep Learning Model for Malaria Parasite Detection
-Project Overview
+**MSc Computing Research Project — Sheffield Hallam University**
 
-This repository contains the source code and development artefacts for a computing research project investigating the use of an ensemble deep learning approach for detecting malaria parasites from microscopic blood smear images.
+## Overview
 
-The project aims to investigate whether combining multiple deep learning models can improve the accuracy and reliability of automated malaria parasite detection.
+This repository contains the development artefacts for **An Ensemble Deep Learning Model for Malaria Parasite Detection from Microscopic Blood Smear Images**.
 
-Research Aim
+The project compares a custom convolutional neural network with EfficientNetB0 and combines model predictions using an ensemble approach. The final system is exposed through a Gradio prototype for real-time **Parasite vs. Uninfected** classification.
 
-To develop and evaluate an ensemble deep learning model for the automated detection of malaria parasites from microscopic blood smear images.
+## Reported Results
 
-Research Objectives
-Prepare and preprocess microscopic blood smear images for deep learning.
-Develop and train appropriate deep learning classification models.
-Evaluate individual models using suitable performance metrics.
-Develop an ensemble approach combining the selected models.
-Compare the performance of the ensemble model with individual models.
-Evaluate the effectiveness of the proposed approach using appropriate evaluation metrics.
-Repository Structure
-data/           Dataset information and data documentation
-notebooks/      Jupyter notebooks used during experimentation
-src/            Python source code
-models/         Model-related files and documentation
-results/        Evaluation results, tables and figures
-requirements.txt Python dependencies
-Dataset
+On the independent test set of **134 images** (91 Parasite, 43 Uninfected), the dissertation reports:
 
-The dataset used in this project consists of microscopic blood smear images used for malaria parasite detection.
+| Model | Accuracy | AUC-ROC |
+| --- | ---: | ---: |
+| Custom CNN | 52.99% | 0.7953 |
+| EfficientNetB0 | 63.43% | 0.7577 |
+| Ensemble | 98.51% | 0.9985 |
 
-Due to dataset size, licensing and/or distribution restrictions, the complete dataset is not stored in this repository. Information about the dataset source and access requirements is provided in the data/README.md file.
+The ensemble produced **91 true positives, 0 false negatives, 41 true negatives, and 2 false positives**. Mean prototype inference latency reported during UAT was **1.18 seconds**.
 
-Technologies
-Python
-TensorFlow / Keras
-NumPy
-Pandas
-OpenCV
-Scikit-learn
-Matplotlib
-Jupyter Notebook
-Reproducibility
+## Repository Structure
 
-To reproduce the experiments, clone this repository and install the required Python dependencies:
+```text
+malaria-parasite-detection/
+├── data/
+│   └── README.md
+├── docs/
+│   ├── README.md
+│   └── SYSTEM USABILITY AND FUNCTIONALITY EVALUATION QUESTIONNAIRE.docx
+├── notebooks/
+│   └── malaria_detection_project.ipynb
+├── results/
+│   ├── README.md
+│   ├── final_ensemble/
+│   ├── model_experiments/
+│   └── sample_images/
+├── .gitignore
+├── README.md
+└── requirements.txt
+```
 
+- `notebooks/` — Jupyter notebook containing the project development and experiments.
+- `data/` — dataset access and preparation notes.
+- `docs/` — supporting evaluation documentation.
+- `results/` — existing result artefacts exported from the project notebook.
+- `requirements.txt` — Python dependencies used by the project.
+- `.gitignore` — Git ignore rules for temporary, large, and environment-specific files.
+
+## Setup
+
+Install the project dependencies:
+
+```bash
 pip install -r requirements.txt
+```
 
-The notebooks and source-code files provide the processing, training and evaluation procedures used in the project.
+Open the project notebook in Jupyter or upload it to Google Colab:
 
-Development and Version Control
+```text
+notebooks/malaria_detection_project.ipynb
+```
 
-GitHub is used to maintain version history throughout the development of the project. Changes to source code, experiments and documentation are committed with descriptive messages to support transparency and traceability.
+## Dataset
 
-Ethical Considerations
+Dataset information and preparation notes are provided in:
 
-The project uses an existing image dataset rather than collecting identifiable personal information directly from participants. Dataset use is subject to the relevant source terms and the ethical requirements of the research project.
+```text
+data/README.md
+```
 
-Author
+The complete image dataset is not currently committed to this repository.
 
-Odion Matthew
+## Results
 
-Academic Project
+Existing project result artefacts are organised under:
 
-Computing Research Project
+```text
+results/
+├── final_ensemble/
+├── model_experiments/
+└── sample_images/
+```
+
+The Jupyter notebook remains the authoritative source for the corresponding code, printed metrics, execution context, and interpretation.
+
+## Supporting Documentation
+
+The `docs/` directory contains the existing **System Usability and Functionality Evaluation Questionnaire** used as supporting documentation for the project evaluation.
+
+## Reproducibility
+
+The repository provides the project notebook, dependency information, dataset documentation, result artefacts, and supporting evaluation documentation to support transparency and reproducibility.
+
+Git commit history records the addition and organisation of the project artefacts.
+
+## Ethics and Intended Use
+
+This project is a research prototype and decision-support artefact. It is **not a certified medical device** and should not be represented as a replacement for qualified clinical diagnosis.
+
+## Author
+
+**Odion Matthew Edeoghon**  
+MSc Computing  
 Sheffield Hallam University
